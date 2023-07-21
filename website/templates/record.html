@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="card">
+  <div class="card-header"><strong>
+    	{{ customer_record.first_name }} 
+		{{ customer_record.last_name }}</strong>
+  </div>
+  <div class="card-body">
+
+
+<p class="card-text">
+<strong>Телефон: </strong>{{ customer_record.phone }}
+</p>
+
+  {% if customer_record.city %}
+<p class="card-text">
+<strong>Город: </strong>{{ customer_record.city }}</p>
+      {% else %}
+      <p class="card-text">
+<strong>Город: </strong>Не указан</p>
+  {% endif %}
+
+      {% if customer_record.photo %}
+<p class="card-img-top">
+<strong>Фото: </strong><img style="max-width:500px" src="{{ customer_record.photo.url }}"></p>
+          {% else %}
+<p class="card-img-top">
+<strong>Фото: </strong>Отсутствует</p>
+    {% endif %}
+
+<p class="card-text">
+<strong>Добавлено: </strong>{{ customer_record.created_at }}</p>
+
+    
+    
+  </div>
+</div>
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
+
+<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Удалить</a>
+
+<a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Редактировать</a>
+		
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+<h1>Добавление записи</h1>
+<br/>
+
+<form method="POST" enctype="multipart/form-data" action="{% url 'add_record' %}">
+	{% csrf_token %}
+
+	{{ form.as_p }}
+
+<br/>
+  <button type="submit" class="btn btn-secondary">Добавить запись</button>
+   <a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
+
+</form>
+
+</div>
+
+{% endblock %}

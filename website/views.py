@@ -5,6 +5,7 @@ from .forms import SignUpForm, AddRecordForm
 from django.db.models import Q
 from .models import Record
 from django.core.paginator import Paginator, EmptyPage
+import os
 
 
 def home(request):
